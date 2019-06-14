@@ -22,7 +22,7 @@ let studentlist = document.getElementsByClassName('js-student-list')
 studentlist.appendChild('ul')
 const ShowPage = (list,page)=> {
    for(i=0; i< list.length;i++){
-      if ((page *10)-10>=i>=page*10){
+      if ((page *itemsperpage)-itemsperpage>=i>=page*itemsperpage){
          list[i].document.style("is-shown")
       }else {
          list[i].document.style("is-hidden")
@@ -79,7 +79,7 @@ const appendPageLinks = (list) => {
 ***/
 
 
-
+ShowPage(students,1)
 
 
 /// Remember to delete the comments that came with this file, and replace them with your own code comments///
