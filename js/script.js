@@ -5,7 +5,11 @@ FSJS project 2 - List Filter and Pagination
    
 // Study guide for this project - https://drive.google.com/file/d/1OD1diUsTMdpfMDv677TfL1xO2CEkykSz/view?usp=sharing
 
-
+function checkForTarget(link){
+   if(link != event.target){
+      link.classList.remove('active')
+   }
+}
 /*** 
    Add your global variables that store the DOM elements you will 
    need to reference and/or manipulate. 
@@ -18,8 +22,9 @@ FSJS project 2 - List Filter and Pagination
 ***/
 itemsperpage = 10
 let students = document.querySelectorAll(".student-item")
-let studentlist = document.getElementsByClassName('js-student-list')
-studentlist.appendChild('ul')
+let studentlist = document.querySelector('js-student-list')
+newList = document.createElement('ul')
+studentlist.appendChild(newList)
 const ShowPage = (list,page)=> {
    for(i=0; i< list.length;i++){
       if ((page *itemsperpage)-itemsperpage>=i>=page*itemsperpage){
@@ -56,6 +61,9 @@ const appendPageLinks = (list) => {
       icon = document.createElement('li a')
       icon.innerHTML('<p>'+ i + '</p>')
       document.addEventListener('click',ShowPage(list,event.target))
+      document.addEventListener('click',checkForTarget(icon))
+      document.addEventListener('click',event.target.classList.add('active'))
+
       
 
    }
