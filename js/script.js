@@ -16,8 +16,19 @@ FSJS project 2 - List Filter and Pagination
    will only be used inside of a function, then it can be locally 
    scoped to that function.
 ***/
-
-
+itemsperpage = 10
+let students = document.querySelectorAll(".student-item")
+let studentlist = document.getElementsByClassName('js-student-list')
+studentlist.appendChild('ul')
+const ShowPage = (list,page)=> {
+   for(i=0; i< list.length;i++){
+      if ((page *10)-10>=i>=page*10){
+         list[i].document.style("is-shown")
+      }else {
+         list[i].document.style("is-hidden")
+      }
+   }
+}
 
 
 /*** 
@@ -35,7 +46,31 @@ FSJS project 2 - List Filter and Pagination
        "invoke" the function 
 ***/
 
+const appendPageLinks = (list) => {
+   pages = list/itemsperpage
+   pages_list = document.createElement('ol')
+   pages_list.classList.add('pagination')
+   site = document.getElementById('page')
+   site.appendChild(pages_list)
+   for(i=1;i<pages;i++){
+      icon = document.createElement('li a')
+      icon.innerHTML('<p>'+ i + '</p>')
+      document.addEventListener('click',ShowPage(list,event.target))
+      
 
+   }
+}
+   /*
+   1. Determine how many pages are needed for the list by dividing the
+   total number of list items by the max number of items per page
+   2. Create a div, give it the “pagination” class, and append it to the .page div
+   3. Add a ul to the “pagination” div to store the pagination links
+   4. for every page, add li and a tags with the page number text
+   5. Add an event listener to each a tag. When they are clicked
+   call the showPage function to display the appropriate page
+   6. Loop over pagination links to remove active class from all links
+   7. Add the active class to the link that was just clicked. You can identify that
+   clicked link using
 
 
 /*** 
@@ -47,4 +82,4 @@ FSJS project 2 - List Filter and Pagination
 
 
 
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
+/// Remember to delete the comments that came with this file, and replace them with your own code comments///
