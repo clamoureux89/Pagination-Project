@@ -21,13 +21,13 @@ function checkForTarget(link){
    scoped to that function.
 ***/
 itemsperpage = 10
-let students = document.querySelectorAll(".student-item")
+let students = document.querySelectorAll("student-item")
 let studentlist = document.querySelector('js-student-list')
 
 
 function ShowPage(list,page) {
    for(i=0; i< list.length;i++){
-      list[i].document.style("none")
+      list[i].document.style("is-hidden")
       if ((page *itemsperpage)-itemsperpage>=i>=page*itemsperpage){
          list[i].document.style("is-shown")
       }
@@ -51,16 +51,14 @@ function ShowPage(list,page) {
 ***/
 
 const appendPageLinks = (list) => {
-   page = document.querySelector('page')
+   site = document.querySelector('page')
    pages = list/itemsperpage
    pagination = document.createElement('div')
-   pagination.classList('pagination')
-   page.appendChild(pagination)
+   pagination.classList.add('pagination')
+   site.appendChild(pagination)
    pages_list = document.createElement('ul')
    pages_list.classList.add('pages-list')
    pagination.appendChild(pages_list)
-   site = document.getElementById('page')
-   site.appendChild(pages_list)
    for(i=1;i<pages;i++){
       icon = document.createElement('li a')
       icon.innerHTML('<p>'+ i + '</p>')
@@ -92,6 +90,6 @@ const appendPageLinks = (list) => {
 
 
 ShowPage(students,1)
-
+appendPageLinks(students)
 
 /// Remember to delete the comments that came with this file, and replace them with your own code comments///
