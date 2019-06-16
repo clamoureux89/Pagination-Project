@@ -20,10 +20,10 @@ function checkForTarget(link){
    will only be used inside of a function, then it can be locally 
    scoped to that function.
 ***/
-itemsperpage = 10
+
 let students = document.querySelectorAll("student-item")
 let studentlist = document.querySelector('js-student-list')
-
+itemsperpage = Math.ceil(students / 10)
 
 function ShowPage(list,page) {
    for(i=0; i< list.length;i++){
@@ -57,7 +57,7 @@ const appendPageLinks = (list) => {
    pagination.classList.add('pagination')
    site.appendChild(pagination)
    pages_list = document.createElement('ul')
-   pages_list.classList.add('pages-list')
+   pages_list = pages_list.classList.add('pages-list')
    pagination.appendChild(pages_list)
    for(i=1;i<pages;i++){
       icon = document.createElement('li a')
@@ -65,9 +65,6 @@ const appendPageLinks = (list) => {
       document.addEventListener('click',ShowPage(list,event.target))
       document.addEventListener('click',checkForTarget(icon))
       document.addEventListener('click',event.target.classList.add('active'))
-
-      
-
    }
 }
    /*
