@@ -24,7 +24,7 @@ itemsperpage = 10
 let students = document.querySelectorAll(".student-item")
 let studentlist = document.querySelector('js-student-list')
 newList = document.createElement('ul')
-studentlist.appendChild(newList)
+studentlist.textContent(newList)
 const ShowPage = (list,page)=> {
    for(i=0; i< list.length;i++){
       if ((page *itemsperpage)-itemsperpage>=i>=page*itemsperpage){
