@@ -23,14 +23,14 @@ function checkForTarget(link){
 itemsperpage = 10
 let students = document.querySelectorAll(".student-item")
 let studentlist = document.querySelector('js-student-list')
-newList = document.createElement('ul')
-studentlist.textContent(newList)
-const ShowPage = (list,page)=> {
+
+
+function ShowPage(list,page) {
    for(i=0; i< list.length;i++){
       if ((page *itemsperpage)-itemsperpage>=i>=page*itemsperpage){
          list[i].document.style("is-shown")
       }else {
-         list[i].document.style("is-hidden")
+         list[i].document.style("none")
       }
    }
 }
@@ -52,9 +52,14 @@ const ShowPage = (list,page)=> {
 ***/
 
 const appendPageLinks = (list) => {
+   page = document.querySelector('page')
    pages = list/itemsperpage
-   pages_list = document.createElement('ol')
-   pages_list.classList.add('pagination')
+   pagination = document.createElement('div')
+   pagination.classList('pagination')
+   page.appendChild(pagination)
+   pages_list = document.createElement('ul')
+   pages_list.classList.add('pages-list')
+   pagination.appendChild(pages_list)
    site = document.getElementById('page')
    site.appendChild(pages_list)
    for(i=1;i<pages;i++){
