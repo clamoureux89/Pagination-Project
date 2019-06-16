@@ -27,10 +27,9 @@ let studentlist = document.querySelector('js-student-list')
 
 function ShowPage(list,page) {
    for(i=0; i< list.length;i++){
+      list[i].document.style("none")
       if ((page *itemsperpage)-itemsperpage>=i>=page*itemsperpage){
          list[i].document.style("is-shown")
-      }else {
-         list[i].document.style("none")
       }
    }
 }
