@@ -23,11 +23,11 @@ function checkForTarget(link){
 
 let students = document.querySelectorAll("student-item")
 let studentlist = document.querySelector('js-student-list')
-itemsperpage = Math.ceil(students / 10)
+itemsperpage = 10
 
 function ShowPage(list,page) {
    for(i=0; i< list.length;i++){
-      list[i].document.style("is-hidden")
+      list[i].document.style.display == "none"
       if ((page *itemsperpage)-itemsperpage>=i>=page*itemsperpage){
          list[i].document.style("is-shown")
       }
@@ -51,17 +51,20 @@ function ShowPage(list,page) {
 ***/
 
 const appendPageLinks = (list) => {
-   site = document.querySelector('page')
+   site = document.querySelector('.page')
    pages = list/itemsperpage
    pagination = document.createElement('div')
    pagination.classList.add('pagination')
-   site.appendChild(pagination)
    pages_list = document.createElement('ul')
-   pages_list = pages_list.classList.add('pages-list')
+   pages_list.classList.add('pages-list')
    pagination.appendChild(pages_list)
+   site.appendChild(pagination)
    for(i=1;i<pages;i++){
-      icon = document.createElement('li a')
-      icon.innerHTML('<p>'+ i + '</p>')
+      icon = document.createElement('li')
+      number = document.createElement('a')
+      number.herf == "#"
+      number.textContent == i
+      pages_list.appendChild(number)
       document.addEventListener('click',ShowPage(list,event.target))
       document.addEventListener('click',checkForTarget(icon))
       document.addEventListener('click',event.target.classList.add('active'))
