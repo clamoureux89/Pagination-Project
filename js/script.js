@@ -21,15 +21,16 @@ function checkForTarget(link){
    scoped to that function.
 ***/
 
-let students = document.querySelectorAll("student-item cf")
-let studentlist = document.querySelector('js-student-list')
+
+let studentlist = document.querySelector('ul')
+let students = studentlist.getElementsByTagName('li')
 itemsperpage = 10
 
 function ShowPage(list,page) {
    for(i=0; i< list.length;i++){
-      studentlist[i].document.style.display == "none"
+      list[i].style.display == "none"
       if ((page *itemsperpage)-itemsperpage>=i>=page*itemsperpage){
-         studentlist[i].document.style("is-shown")
+         list[i].style("is-shown")
       }
    }
 }
