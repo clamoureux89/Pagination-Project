@@ -49,7 +49,7 @@ const appendPageLinks = (list) => {
       icon.appendChild(number)
       pages_list.appendChild(icon);
       number.addEventListener('click',() => {
-         ShowPage(students,event.target)
+         ShowPage(students,i)
          event.target.classList.add('active')
          checkForTarget(i)
       })
