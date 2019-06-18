@@ -20,6 +20,7 @@ function ShowPage(list,page) {
       console.log(i + "is changed")
       if ((page *itemsperpage)-itemsperpage>=i>=page*itemsperpage){
          list[i].style("is-shown")
+         console.log(i+"reverted")
       }
    }
 }
@@ -39,8 +40,8 @@ const appendPageLinks = (list) => {
    for(i=1;i<pages;i++){
       icon = document.createElement('li')
       number = document.createElement('a')
-      number.herf == "#"
-      number.textContent == i
+      number.herf === "#"
+      number.textContent === i
       pages_list.appendChild(number)
       document.addEventListener('click',ShowPage(list,event.target))
       document.addEventListener('click',checkForTarget(icon))
