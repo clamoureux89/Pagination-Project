@@ -33,7 +33,7 @@ function ShowPage(list,page) {
 
 const appendPageLinks = (list) => {
    site = document.querySelector('.page');
-   pages = list/itemsperpage;
+   pages = Math.ceil(list.length/itemsperpage);
    pagination = document.createElement('div');
    pagination.classList.add('pagination');
    pages_list = document.createElement('ul');
@@ -43,13 +43,15 @@ const appendPageLinks = (list) => {
    for(i=1;i<pages;i++){
       icon = document.createElement('li');
       number = document.createElement('a');
-      number.herf === "#";
-      number.textContent === i;
-      pages_list.appendChild(number);
-      document.addEventListener('click',() => {
-         ShowPage(list,event.target)
+      number.herf = "#";
+      number.textContent = i;
+      number.classList.add('none')
+      icon.appendChild(number)
+      pages_list.appendChild(icon);
+      number.addEventListener('click',() => {
+         ShowPage(students,event.target)
          event.target.classList.add('active')
-
+         checkForTarget(i)
       })
    }
 }
