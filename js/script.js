@@ -15,6 +15,7 @@ let students = studentlist.getElementsByTagName('li')
 itemsperpage = 10
 
 function ShowPage(list,page) {
+   page.classList('active')
    for(i=0; i< list.length;i++){
       list[i].style.display === "none"
       console.log(i + "is changed")
@@ -44,8 +45,6 @@ const appendPageLinks = (list) => {
       number.textContent === i
       pages_list.appendChild(number)
       document.addEventListener('click',ShowPage(list,event.target))
-      document.addEventListener('click',checkForTarget(icon))
-      document.addEventListener('click',event.target.classList.add('active'))
    }
 }
 
