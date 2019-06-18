@@ -16,7 +16,8 @@ itemsperpage = 10
 
 function ShowPage(list,page) {
    for(i=0; i< list.length;i++){
-      list[i].style.display == "none"
+      list[i].style.display === "none"
+      console.log(i + "is changed")
       if ((page *itemsperpage)-itemsperpage>=i>=page*itemsperpage){
          list[i].style("is-shown")
       }
