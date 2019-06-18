@@ -15,13 +15,15 @@ let students = studentlist.getElementsByTagName('li')
 itemsperpage = 10
 
 function ShowPage(list,page) {
-   page.classList('active')
+   
    for(i=0; i< list.length;i++){
-      list[i].style.display === "none"
-      console.log(i + "is changed")
-      if ((page *itemsperpage)-itemsperpage>=i>=page*itemsperpage){
-         list[i].style("is-shown")
-         console.log(i+"reverted")
+      if (i<(page *itemsperpage)-itemsperpage && i >= page*itemsperpage){
+         list[i].style.display === "block"
+         console.log(i+"not changed")
+      }else{
+         list[i].style.visibility === "none"
+         list[i].style.display === "none"
+         console.log(i + "is changed")
       }
    }
 }
