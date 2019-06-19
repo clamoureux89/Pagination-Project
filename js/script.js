@@ -10,7 +10,7 @@ const students = studentlist.getElementsByTagName('li')
 const itemsperpage = 10
 
 const ShowPage=(list,page) => {
-   
+   console.log(page)
    let first = (page *itemsperpage)-(itemsperpage +1);
    let second = (page*itemsperpage) - 1;
    
@@ -47,17 +47,13 @@ const appendPageLinks = (list) => {
       number.textContent = i;
       icon.appendChild(number)
       pages_list.appendChild(icon);
-      
-   }
-   let links = document.querySelectorAll('a')
-   for(i=1;i<pages;i++){
-      links[i].addEventListener('click',(e) => {
+      number.addEventListener('click',(e) => {
       console.log(i);
       
-      for(l=0;l<links.length;l++){
-         links[l].classList.remove('active');
+      for(l=0;l<pages_list.length;l++){
+         pages_list[l].classList.remove('active');
       }
-      ShowPage(list,i);
+      ShowPage(list,number.textContent)
       e.target.classList.add('active');
       })
    }
