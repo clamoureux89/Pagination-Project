@@ -49,14 +49,15 @@ const appendPageLinks = (list) => {
       pages_list.appendChild(icon);
       
    }
-   let icons = document.querySelectorAll('a');
+   let links = document.querySelectorAll('a')
    for(i=1;i<pages;i++){
-   icons[i].addEventListener('click',(e) => {
+      links[i].addEventListener('click',(e) => {
       console.log(i);
-      ShowPage(list,i);
-      for(l=0;l<icons.length;l++){
-         icons[l].classList.remove('active');
+      
+      for(l=0;l<links.length;l++){
+         links[l].classList.remove('active');
       }
+      ShowPage(list,i);
       e.target.classList.add('active');
       })
    }
