@@ -7,57 +7,61 @@ FSJS project 2 - List Filter and Pagination
 
 const studentlist = document.querySelector('ul')
 const students = studentlist.getElementsByTagName('li')
+const itemsperpage = 10
 
-
-function ShowPage(list,page) {
-   itemsperpage = 10
-   first = (page *itemsperpage)-(itemsperpage +1);
-   second = (page*itemsperpage) - 1;
+const ShowPage=(list,page) => {
+   
+   let first = (page *itemsperpage)-(itemsperpage +1);
+   let second = (page*itemsperpage) - 1;
    
    for(i=0; i< list.length;i++){
-      list[i].style.display = "none";
+
       if ([i]> first && [i] <= second){
          list[i].style.display = "block";
-         console.log(i+"not changed");
+         
       }else{
          list[i].style.display = "none";
-         console.log(i + "is changed");
+         
       }
    }
 }
 
 
-
+ShowPage(students,1);
 
 const appendPageLinks = (list) => {
-   site = document.querySelector('.page');
-   pages = Math.ceil(list.length/itemsperpage);
-   pagination = document.createElement('div');
+   const site = document.querySelector('.page');
+   let pages = Math.ceil(list.length/itemsperpage);
+   const pagination = document.createElement('div');
    pagination.classList.add('pagination');
-   pages_list = document.createElement('ul');
+   let pages_list = document.createElement('ul');
    pages_list.classList.add('pages-list');
    pagination.appendChild(pages_list);
    site.appendChild(pagination);
-
+   
 
    for(i=1;i<pages;i++){
-      icon = document.createElement('li');
-      number = document.createElement('a');
-      number.herf = "#";
+      let icon = document.createElement('li');
+      let number = document.createElement('a');
+      number.href = "#";
       number.textContent = i;
       icon.appendChild(number)
       pages_list.appendChild(icon);
-      number.addEventListener('click',() => {
-         ShowPage(students,i);
-         icons = pagination.getElementsByTagName('li')
-         for(i=0;i<icons.length;i++)
-            {icons[i].classList.remove('active')}
-         event.target.classList.add('active');
+      
+   }
+   let icons = document.querySelectorAll('a');
+   for(i=1;i<pages;i++){
+   icons[i].addEventListener('click',(e) => {
+      console.log(i);
+      ShowPage(list,i);
+      for(l=0;l<icons.length;l++){
+         icons[l].classList.remove('active');
+      }
+      e.target.classList.add('active');
       })
    }
 }
 
 
 
-ShowPage(students,1);
 appendPageLinks(students);
