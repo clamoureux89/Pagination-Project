@@ -3,21 +3,19 @@ Treehouse Techdegree:
 FSJS project 2 - List Filter and Pagination
 ******************************************/
 
-function checkForTarget(link){
-   if(link != event.target){
-      link.classList.remove('active');
-   }
-}
 
 
 const studentlist = document.querySelector('ul')
 const students = studentlist.getElementsByTagName('li')
-itemsperpage = 10
+
 
 function ShowPage(list,page) {
+   itemsperpage = 10
    first = (page *itemsperpage)-(itemsperpage +1);
    second = (page*itemsperpage) - 1;
+   
    for(i=0; i< list.length;i++){
+      list[i].style.display = "none";
       if ([i]> first && [i] <= second){
          list[i].style.display = "block";
          console.log(i+"not changed");
@@ -40,18 +38,21 @@ const appendPageLinks = (list) => {
    pages_list.classList.add('pages-list');
    pagination.appendChild(pages_list);
    site.appendChild(pagination);
+
+
    for(i=1;i<pages;i++){
       icon = document.createElement('li');
       number = document.createElement('a');
       number.herf = "#";
       number.textContent = i;
-      number.classList.add('none')
       icon.appendChild(number)
       pages_list.appendChild(icon);
       number.addEventListener('click',() => {
-         ShowPage(students,i)
-         event.target.classList.add('active')
-         checkForTarget(i)
+         ShowPage(students,i);
+         icons = pagination.getElementsByTagName('li')
+         for(i=0;i<icons.length;i++)
+            {icons[i].classList.remove('active')}
+         event.target.classList.add('active');
       })
    }
 }
