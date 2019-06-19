@@ -4,11 +4,14 @@ FSJS project 2 - List Filter and Pagination
 ******************************************/
 
 
-
+///Establish Global Variables
 const studentlist = document.querySelector('ul')
 const students = studentlist.getElementsByTagName('li')
 const itemsperpage = 10
 
+
+///Create function for showing list. 
+///Takes two arguments, the first being the list of students, the second being which page of the list to display
 const ShowPage=(list,page) => {
    console.log(page)
    let first = (page *itemsperpage)-(itemsperpage +1);
@@ -26,9 +29,11 @@ const ShowPage=(list,page) => {
    }
 }
 
-
+///Call first function for initial page
 ShowPage(students,1);
 
+///Create function for establishing page links.  Adds event listeners so that the user can click to different pages.
+///Also assigns and removes the "active" class so users know which page they are on
 const appendPageLinks = (list) => {
    const site = document.querySelector('.page');
    let pages = Math.ceil(list.length/itemsperpage);
@@ -49,9 +54,9 @@ const appendPageLinks = (list) => {
       pages_list.appendChild(icon);
       number.addEventListener('click',(e) => {
       console.log(i);
-      
-      for(l=0;l<pages_list.length;l++){
-         pages_list[l].classList.remove('active');
+      let page_links = document.getElementsByClassName('active')
+      for(l=0;l<page_links.length;l++){
+         page_links[l].classList.remove('active');
       }
       ShowPage(list,number.textContent)
       e.target.classList.add('active');
