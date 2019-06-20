@@ -15,11 +15,11 @@ const itemsperpage = 10
 const ShowPage=(list,page) => {
    console.log(page)
    let first = (page *itemsperpage)-(itemsperpage +1);
-   let second = (page*itemsperpage) - 1;
+   let second = (page*itemsperpage);
    
    for(i=0; i< list.length;i++){
 
-      if ([i]> first && [i] <= second){
+      if ([i]>= first && [i] <= second){
          list[i].style.display = "block";
          
       }else{
@@ -45,7 +45,7 @@ const appendPageLinks = (list) => {
    site.appendChild(pagination);
    
 
-   for(i=1;i<pages;i++){
+   for(i=1;i<=pages;i++){
       let icon = document.createElement('li');
       let number = document.createElement('a');
       number.href = "#";
