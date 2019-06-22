@@ -19,7 +19,7 @@ const ShowPage=(list,page) => {
    
    for(i=0; i< list.length;i++){
 
-      if ([i]>= first && [i] < second){
+      if ([i]>= first && [i] <= second){
          list[i].style.display = "block";
          
       }else{
