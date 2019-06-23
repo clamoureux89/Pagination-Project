@@ -12,11 +12,14 @@ const itemsperpage = 10
 
 ///Create function for showing list. 
 ///Takes two arguments, the first being the list of students, the second being which page of the list to display
-const ShowPage = (list,page) => {
-   let first = (page * itemsperpage) - itemsperpage;
-   let second = page * itemsperpage;
 
-   console.log(first, second);
+const ShowPage=(list,page) => {
+   console.log(page)
+   let first = (page *itemsperpage)-(itemsperpage -1);
+   let second = (page*itemsperpage);
+   
+   for(i=0; i< list.length;i++){
+
 
    for(let i = 0; i < list.length; i++){
 
@@ -28,7 +31,7 @@ const ShowPage = (list,page) => {
       }
    }
 }
-
+}
 ///Call first function for initial page
 ShowPage(students,1);
 
